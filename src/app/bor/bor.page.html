@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Block OverRide
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-content padding>
+ 
+    <ion-grid fixed>
+  
+          <ion-col>
+              <ion-item>
+                  <ion-label>Extent</ion-label>
+                  <ion-select [(ngModel)]="extent">
+                    <ion-select-option value="days">Days</ion-select-option>
+                    <ion-select-option value="amount">Amount</ion-select-option>
+                  </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+                <ion-item>
+                  <ion-input placeholder="Value" [(ngModel)]="value"></ion-input>
+                </ion-item>
+              </ion-col>   
+      
+       
+    
+      <ion-row>
+        <ion-col text-center>
+          <ion-button (click)="UpdateBOR()" [disabled]="!value ">
+              Update  
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      
+    </ion-grid>
+</ion-content>
