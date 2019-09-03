@@ -10,22 +10,23 @@ import { FcmService } from '../services/fcm.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+toast:any;
   constructor(platform: Platform, fcm: FcmService, toastCtrl: ToastController) {
     platform.ready().then(() => {
 
+
       // Get a FCM token
       fcm.getToken()
-
+debugger;
       // Listen to incoming messages
       fcm.listenToNotifications().pipe(
         tap(msg => {
           // show a toast
-          const toast = toastCtrl.create({
+          this.toast = toastCtrl.create({
             message: msg.body,
             duration: 3000
-          }).then((toast) => {
-            toast.present();
+          }).then((toastp) => {
+            toastp.present();
           });
         })
       )    
