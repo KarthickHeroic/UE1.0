@@ -1,0 +1,7 @@
+{
+  "name": "UE1.0",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "809429894513",
+    "firebase_url": "https://udhayam-9d85a.firebaseio.com",
+    "project_id": "udhayam-9d85a",
+    "storage_bucket": "udhayam-9d85a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809429894513:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809429894513-0kk5u9hhp9e5cs4sms33sl8f0oblkok8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRCWOlTlhHPdD5cgfyjqolCJfmFYw66PY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809429894513-1bol779fc6catae3te21unpe0fv164bo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
