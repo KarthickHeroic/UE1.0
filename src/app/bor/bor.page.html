@@ -1,44 +1,72 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Block OverRide
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Block OverRide
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
+      <ion-content class="mainContent" padding>
+          <div [class.hide]="isReceive">
+          <ion-row class="labelList">
+              <ion-col> <ion-label class="leftLabel">Site Name:</ion-label></ion-col>
+              <ion-col> <ion-label class="rightLabel">{{siteName}}</ion-label></ion-col>
+          </ion-row>
+          <ion-row class="labelList">
+              <ion-col> <ion-label class="leftLabel">Customer Name:</ion-label></ion-col>
+              <ion-col> <ion-label class="rightLabel">{{custName}}</ion-label></ion-col>
+          </ion-row>
+          <ion-row class="labelList">
+              <ion-col> <ion-label class="leftLabel">Amount Name:</ion-label></ion-col>
+              <ion-col> <ion-label class="rightLabel">{{amount}}</ion-label></ion-col>
+          </ion-row>
+        </div>
 
-  <ion-content padding>
- 
-    <ion-grid fixed>
+        <div [class.hide]="isUpdate">  
+            <ion-row class="labelList">
+                <ion-label class="centerLable"> Block OverRide request is completed</ion-label>
+            </ion-row>
+          </div>
+        </ion-content>
+      
+          <ion-footer no-shadow>
+              <div [class.hide]="isReceive">
+         
+            <ion-grid fixed position="bottom">
+          
+                  <ion-col>
+                      <ion-item>
+                          <ion-label>Extent</ion-label>
+                          <ion-select [(ngModel)]="extent">
+                            <ion-select-option value="days">Days</ion-select-option>
+                            <ion-select-option value="amount">Amount</ion-select-option>
+                          </ion-select>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col>
+                        <ion-item>
+                          <ion-input placeholder="Value" [(ngModel)]="value"></ion-input>
+                        </ion-item>
+                      </ion-col>   
+              
+               
+            
+              <ion-row>
+                <ion-col text-center>
+                  <ion-button expand="full" (click)="UpdateBOR()" [disabled]="!value ">
+                      Update  
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+              
+            </ion-grid>
+            </div>
+            </ion-footer>
+
+
   
-          <ion-col>
-              <ion-item>
-                  <ion-label>Extent</ion-label>
-                  <ion-select [(ngModel)]="extent">
-                    <ion-select-option value="days">Days</ion-select-option>
-                    <ion-select-option value="amount">Amount</ion-select-option>
-                  </ion-select>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-                <ion-item>
-                  <ion-input placeholder="Value" [(ngModel)]="value"></ion-input>
-                </ion-item>
-              </ion-col>   
-      
-       
-    
-      <ion-row>
-        <ion-col text-center>
-          <ion-button (click)="UpdateBOR()" [disabled]="!value ">
-              Update  
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      
-    </ion-grid>
-</ion-content>
+  
+  

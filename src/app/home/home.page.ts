@@ -13,9 +13,13 @@ import { Router,NavigationExtras  } from '@angular/router';
 export class HomePage {
 toast:any;
 info;
-constructor(private fcm: FCM, public plt: Platform, public route: Router) {
+constructor(private fcm: FCM, public plt: Platform, public route: Router, fcmService:FcmService) {
   this.plt.ready()
     .then(() => {
+
+      fcmService.getToken();
+
+
       this.fcm.onNotification().subscribe(data => {
         console.log(data);
 this.info = {
