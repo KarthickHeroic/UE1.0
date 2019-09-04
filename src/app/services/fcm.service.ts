@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable,  } from '@angular/core';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { Platform } from '@ionic/angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class FcmService {
 
+export class FcmService {
+ // @ViewChild('myNav') nav: NavController
   constructor(
+  
     public firebaseNative: Firebase,
     public afs: AngularFirestore,
     private platform: Platform

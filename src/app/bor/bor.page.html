@@ -29,6 +29,25 @@
             <ion-row class="labelList">
                 <ion-label class="centerLable"> Block OverRide request is completed</ion-label>
             </ion-row>
+
+            <!-- <ion-row>
+              <ion-col >
+                <ion-button (click)="insert()">
+                    Insert Key
+                </ion-button>
+              </ion-col>
+              <ion-col >
+                <ion-button (click)="getKey()">
+                    Get Key
+                </ion-button>
+              </ion-col>
+              <ion-col >
+                <ion-button (click)="delete()">
+                   Delete Key
+                </ion-button>
+              </ion-col>
+              
+            </ion-row> -->
           </div>
         </ion-content>
       
@@ -56,11 +75,12 @@
             
               <ion-row>
                 <ion-col text-center>
-                  <ion-button expand="full" (click)="UpdateBOR()" [disabled]="!value ">
+                  <ion-button expand="full" (click)="UpdateBOR()" [disabled]="!value && !extent ">
                       Update  
                   </ion-button>
                 </ion-col>
               </ion-row>
+             
               
             </ion-grid>
             </div>
