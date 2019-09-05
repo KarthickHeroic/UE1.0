@@ -31,36 +31,24 @@ export class BorPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.data = this.router.getCurrentNavigation().extras.state.values; 
-        console.log("BOR"+this.data);
-               
-        this.getValues=JSON.stringify(this.data);          
-        this.getObj=JSON.parse(this.getValues);
-        
-        this.siteId = this.getObj.siteId, 
-        this.siteName = this.getObj.siteName,
-        this.custId = this.getObj.custId,
-        this.custName = this.getObj.custName,
-        this.amount = this.getObj.amount,
-        this.token = this.getObj.token
-        this.sqlLite.insertKey(this.token);
-            }
-   if(this.token!=null){
-    this.isReceive=false;
-    this.isUpdate=true;   
-   }
-   else
-   {
-         this.isUpdate=false;
-    this.isReceive=true;
-   }
-            
+      
+       this.ConStringService.getValues(this.data).subscribe(data => {
+        console.log("BOR SITE NAME"+this.data.payload.data()['siteName']);
+        this.siteId = data.payload.data()['siteId'],
+                this.siteName =data.payload.data()['siteName'],
+               this.custId = data.payload.data()['custId'],
+                this.custName = data.payload.data()['custName'],
+                this.amount = data.payload.data()['amount'],
+                this.token =data.payload.data()['token']
+       });
+      }
     });
-  }
+}
 
   ngOnInit() {        
-    // this.isUpdate=false;
-    // this.isReceive=true;
+  
   }
+ 
 
   UpdateBOR(recordRow){
     let record = {};
@@ -70,6 +58,8 @@ export class BorPage implements OnInit {
     this.ConStringService.update_bor(this.token,record);
     this.isReceive=true;
     this.isUpdate=false;
+    this.router.navigate(['list']);
+
   }
   insert(){
     this.sqlLite.insertKey("68768775");

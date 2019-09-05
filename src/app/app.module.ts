@@ -15,6 +15,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FcmService } from './services/fcm.service';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
+import { Device } from '@ionic-native/device/ngx';
 
 const firebaseConfig = {
   apiKey: "AIzaSyChKg41ncBoSGhmsg0BqvjHvJepM_P9png",
@@ -45,6 +46,7 @@ const firebaseConfig = {
     FCM,
     SQLite,
     FcmService,
+    Device,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

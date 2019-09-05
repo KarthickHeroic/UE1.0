@@ -31,9 +31,9 @@ export class ConStringService {
     this.firestore.doc('bor/' + recordID).update(record);
   }
 
-  // getNotValues(key){
-  //   this.firestore.doc('bor/' + key).snapshotChanges()
-  // }
+  getValues(key){
+    return this.firestore.collection('bor/').doc(key).snapshotChanges()
+  }
  
 }
 

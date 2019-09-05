@@ -2,6 +2,7 @@ import { Injectable,  } from '@angular/core';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { Platform } from '@ionic/angular';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { Device } from '@ionic-native/device/ngx';
 
 
 @Injectable({
@@ -14,7 +15,8 @@ export class FcmService {
   
     public firebaseNative: Firebase,
     public afs: AngularFirestore,
-    private platform: Platform
+    private platform: Platform,
+    private device: Device
   ) {}
 
   // Get permission from the user
@@ -42,7 +44,11 @@ export class FcmService {
   
     const docData = { 
       
-      token
+      token,
+      deviceName:(window as any).device.name,
+      osVersion: this.device.version,
+      uuid: this.device.uuid
+
       
     }
   

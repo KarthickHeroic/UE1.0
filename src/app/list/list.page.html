@@ -4,24 +4,21 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      List
-    </ion-title>
+     Block OverRide
+        </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
+    <ion-item *ngFor="let boritem of bor" (click)="itemDetails(boritem.id)" >  
+      {{boritem.siteName}}
       <div class="item-note" slot="end">
-        {{item.note}}
+        {{boritem.custName}}
       </div>
+      <ion-icon name="arrow-dropright" slot="end"></ion-icon>
     </ion-item>
+
+    <ion-item [class.hide]="noKey">Request Not Found!</ion-item>
   </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
 </ion-content>

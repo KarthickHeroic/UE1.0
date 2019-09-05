@@ -39,7 +39,7 @@ export class SqlLiteService {
       .catch(e => console.log(e));
     });
 
-    
+    return this.keys;
     
     
   }
