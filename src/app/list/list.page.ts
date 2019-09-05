@@ -10,50 +10,55 @@ import { SqlLiteService } from '../services/sql-lite.service';
 })
 export class ListPage implements OnInit {
   public bor: Array<{id:string; siteName: string; custName: string; }> = [];
-  private noKey: any;
-  private requestKey;
+  public requestKey : Array<{ key: string; }> = [];
+  public getKey: Array<{ key: string; }> = [];
+  public noKey: any;
+  
 
 
   public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor(public conString:ConStringService, public route: Router, private sqlLite:SqlLiteService) { 
+  constructor(public conString:ConStringService, public route: Router, public sqlLite:SqlLiteService) { 
 
-    this.requestKey = sqlLite.getValues()
-    console.log(this.requestKey);
-    
-    if(this.requestKey.length>0)
-    {
-      this.noKey=true;
-    }
-
- 
-  }
-
-  ionViewWillEnter(){
-    this.requestKey.forEach(i =>
-      {     
-        this.conString.getValues(i.key).subscribe(data => {
-          if(data.payload.data()['isActive']=='0')
-          {
-            this.bor.push({
-              id:i.key,
-              siteName:data.payload.data()['siteName'],
-            custName:data.payload.data()['custName']      
-            }) 
-          }
-                
+    this.sqlLite.getValues()
+    .then((res) => {     
+      for(var i=0; i<res.rows.length; i++) {                            
+              this.requestKey.push({key:res.rows.item(i).key});     
+            }
+            let getValues=JSON.stringify(this.requestKey);          
+            this.getKey=JSON.parse(getValues);
+            console.log(this.getKey);
   
-        });       
-       
-      })
-
-  } 
-
-  ngOnInit() {
-
+            if(Object.keys(this.getKey).length>0)
+            {
+              this.noKey=true;
+            }
+            this.getKey.forEach(i =>
+              {     
+                console.log(i.key);
+                
+                this.conString.getValues(i.key).subscribe(data => {
+                  if(data.payload.data()['isActive']=='0')
+                  {
+                    this.bor.push({
+                      id:i.key,
+                      siteName:data.payload.data()['siteName'],
+                    custName:data.payload.data()['custName']      
+                    }) 
+                  }
+                });  
+              })
+            
+            // console.log("FinalKey_Set"+JSON.parse(JSON.stringify(this.requestKey)));   
+     });
     
     
-     
+      
+    
+    
   }
+
+  ngOnInit() {  }
+
   itemDetails(key){
 
     let navigationExtras: NavigationExtras  = {            
@@ -62,13 +67,9 @@ export class ListPage implements OnInit {
       }
     };
     this.route.navigate(['bor'],navigationExtras);
-    console.log(key);
+   
     
   }
   }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
-
+ 
   

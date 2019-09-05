@@ -13,20 +13,21 @@ import { SqlLiteService } from '../services/sql-lite.service';
 })
 export class HomePage {
 toast:any;
-info;
 constructor(private fcm: FCM, public plt: Platform, public route: Router, private sqlLite:SqlLiteService, fcmService:FcmService) {
   this.plt.ready()
     .then(() => {
       fcmService.getToken();
+     
+
+      this.fcm.onTokenRefresh().subscribe(token => {
+        // Register your new token in your back-end if you want
+        // backend.registerToken(token);
+      });
     });
 
-    this.fcm.onNotification().subscribe(data => {
-      console.log(data);
-      console.log(data.token);
+    this.fcm.onNotification().subscribe(data => { 
       sqlLite.insertKey(data.token);
-      if (data.wasTapped) {   
-       
-       
+      if (data.wasTapped) {  
         console.log("Received in background");
         let navigationExtras: NavigationExtras = {            
           state: {
@@ -36,7 +37,6 @@ constructor(private fcm: FCM, public plt: Platform, public route: Router, privat
         this.route.navigate(['bor'],navigationExtras);
       } else {
         console.log("Received in foreground");
-       
         let navigationExtras: NavigationExtras = {            
           state: {
             values: data

@@ -5,6 +5,7 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 })
 export class SqlLiteService {
   keys: any = [];
+  public database: SQLiteObject;
   constructor( private sqlite: SQLite) { }
 
   createDB(){
@@ -13,59 +14,23 @@ export class SqlLiteService {
       location: 'default'
     })
       .then((db: SQLiteObject) => {
-    
-    
-        db.executeSql('create table notifi(key TEXT))', [])
+        this.database = db;  
+        db.executeSql('create table if not exists notifi (key TEXT)',[])
           .then(() => console.log('Executed SQL'))
           .catch(e => console.log(e));
-    
-    
       })
       .catch(e => console.log(e));
   }
 
   getValues(){
-    this.sqlite.create({
-      name: 'udhayamkey.db',
-      location: 'default'
-    }).then((db: SQLiteObject) => {     
-      db.executeSql('SELECT * FROM notifi', [])
-      .then(res => {
-        this.keys = [];
-        for(var i=0; i<res.rows.length; i++) {            
-          this.keys.push({key:res.rows.item(i).key});        
-        }
-      })
-      .catch(e => console.log(e));
-    });
 
-    return this.keys;
-    
-    
+  return  this.database.executeSql("SELECT * FROM notifi ",[])
   }
   insertKey(key){
-    this.sqlite.create({
-      name: 'udhayamkey.db',
-      location: 'default'
-    }).then((db: SQLiteObject) => {
-      db.executeSql('INSERT INTO notifi (key) VALUES(?)',[key]).then(res =>{
-        console.log(res);
-        console.log("inserted" + key);
-      }).catch(e => console.log(e));
-  }).catch(e => console.log(e));
-
+    this.database.executeSql('INSERT INTO notifi (key) VALUES(?)', [key]);
 }
 
 deleteData(key) {
-  this.sqlite.create({
-    name: 'udhayamkey.db',
-    location: 'default'
-  }).then((db: SQLiteObject) => {
-    db.executeSql('DELETE FROM notifi WHERE key=?', [key])
-    .then(res => {
-      console.log(res);     
-    })
-    .catch(e => console.log(e));
-  }).catch(e => console.log(e));
+  this.database.executeSql('DELETE FROM notifi where key=?',[key]) 
 }
 }

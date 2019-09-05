@@ -21,7 +21,7 @@ export class BorPage implements OnInit {
   custName: string;
   amount: string;
   token:string;
-  getValues:any;
+  getReqKey:any;
   getObj:any;
   isUpdate:any;
   isReceive:any;
@@ -31,16 +31,16 @@ export class BorPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.data = this.router.getCurrentNavigation().extras.state.values; 
-      
-       this.ConStringService.getValues(this.data).subscribe(data => {
-        console.log("BOR SITE NAME"+this.data.payload.data()['siteName']);
-        this.siteId = data.payload.data()['siteId'],
-                this.siteName =data.payload.data()['siteName'],
-               this.custId = data.payload.data()['custId'],
-                this.custName = data.payload.data()['custName'],
-                this.amount = data.payload.data()['amount'],
-                this.token =data.payload.data()['token']
-       });
+        this.getReqKey=JSON.parse(JSON.stringify(this.data));      
+
+       this.ConStringService.getValues(this.getReqKey.token).subscribe(getReqData => {       
+        this.siteId = getReqData.payload.data()['siteId'],
+                this.siteName =getReqData.payload.data()['siteName'],
+               this.custId = getReqData.payload.data()['custId'],
+                this.custName = getReqData.payload.data()['custName'],
+                this.amount = getReqData.payload.data()['amount'],
+                this.token =getReqData.payload.data()['token']
+              });
       }
     });
 }
@@ -50,7 +50,7 @@ export class BorPage implements OnInit {
   }
  
 
-  UpdateBOR(recordRow){
+  UpdateBOR(){
     let record = {};
     record['extent'] = this.extent;
     record['value'] = this.value;   
@@ -60,15 +60,5 @@ export class BorPage implements OnInit {
     this.isUpdate=false;
     this.router.navigate(['list']);
 
-  }
-  insert(){
-    this.sqlLite.insertKey("68768775");
-  }
-  delete()
-  {
-    this.sqlLite.deleteData("68768775");
-  }
-  getKey(){
-    this.sqlLite.getValues();
-  }
+  }  
 }

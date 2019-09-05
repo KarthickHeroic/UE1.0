@@ -51,31 +51,8 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.sqlLite.createDB();
+     // this.sqlLite.deleteData();
 
-      // this.fcm.onNotification().subscribe(data => {
-      //   console.log(data);
-      //   if (data.wasTapped) {         
-         
-      //     console.log("Received in background");
-      //     let navigationExtras: NavigationExtras = {            
-      //       state: {
-      //         values: data
-      //       }
-      //     };
-      //     this.route.navigate(['bor'],navigationExtras);
-      //   } else {
-      //     console.log("Received in foreground");
-      //     let navigationExtras: NavigationExtras = {            
-      //       state: {
-      //         values: data
-      //       }
-      //     };
-      //     this.route.navigate(['bor'],navigationExtras);
-      //   };
-      // });
-
-     
-      
     });
   }
 }
