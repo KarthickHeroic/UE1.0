@@ -1,6 +1,6 @@
-import { LoaderService } from './../services/loader.service';
+import { LoaderService } from '../../services/loader.service';
 import { Component, OnInit } from '@angular/core';
-import { ConStringService } from '../services/con-string.service';
+import { ConStringService } from '../../services/con-string.service';
 import { NavigationExtras, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';

@@ -1,9 +1,9 @@
 import { Component,OnInit } from '@angular/core';
 import { FCM } from '@ionic-native/fcm/ngx';
 import {Platform } from '@ionic/angular';
-import { FcmService } from '../services/fcm.service';
+import { FcmService } from '../../services/fcm.service';
 import { Router,NavigationExtras  } from '@angular/router';
-import { ConStringService } from '../services/con-string.service';
+import { ConStringService } from '../../services/con-string.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({

@@ -9,13 +9,13 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+    loadChildren: () => import('./pages/list/list.module').then(m => m.ListPageModule)
   },
-  { path: 'bor', loadChildren: './bor/bor.module#BorPageModule' }
+  { path: 'bor', loadChildren: './pages/bor/bor.module#BorPageModule' }
 ];
 
 @NgModule({

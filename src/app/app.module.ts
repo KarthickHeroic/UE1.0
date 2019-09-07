@@ -14,7 +14,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FcmService } from './services/fcm.service';
 import { FCM } from '@ionic-native/fcm/ngx';
-import { SQLite } from '@ionic-native/sqlite/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 

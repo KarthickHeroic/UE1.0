@@ -1,7 +1,7 @@
-import { LoaderService } from './../services/loader.service';
+import { LoaderService } from '../../services/loader.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConStringService } from '../services/con-string.service';
+import { ConStringService } from '../../services/con-string.service';
 import { ToastController } from '@ionic/angular';
 
 
