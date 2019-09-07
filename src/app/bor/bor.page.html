@@ -25,37 +25,13 @@
           </ion-row>
         </div>
 
-        <!-- <div>  
-            <ion-row class="labelList">
-                <ion-label class="centerLable"> Block OverRide request is completed</ion-label>
-            </ion-row> -->
-
-            <!-- <ion-row>
-              <ion-col >
-                <ion-button (click)="insert()">
-                    Insert Key
-                </ion-button>
-              </ion-col>
-              <ion-col >
-                <ion-button (click)="getKey()">
-                    Get Key
-                </ion-button>
-              </ion-col>
-              <ion-col >
-                <ion-button (click)="delete()">
-                   Delete Key
-                </ion-button>
-              </ion-col>
-              
-            </ion-row> -->
-          <!-- </div> -->
+    
         </ion-content>
       
           <ion-footer no-shadow>
-              <div >
+              <div>
          
-            <ion-grid fixed position="bottom">
-          
+            <ion-grid fixed position="bottom">          
                   <ion-col>
                       <ion-item>
                           <ion-label>Extent</ion-label>
@@ -67,7 +43,7 @@
                     </ion-col>
                     <ion-col>
                         <ion-item>
-                          <ion-input placeholder="Value" [(ngModel)]="value"></ion-input>
+                          <ion-input  [disabled]="!extent" placeholder="Value" (ionChange)="valueChange($event)" [(ngModel)]="value"></ion-input>
                         </ion-item>
                       </ion-col>   
               
@@ -75,7 +51,7 @@
             
               <ion-row>
                 <ion-col text-center>
-                  <ion-button expand="full" (click)="UpdateBOR()" [disabled]="!value && !extent ">
+                  <ion-button expand="full" (click)="UpdateBOR()" [disabled]="buttonActive || !value">
                       Update  
                   </ion-button>
                 </ion-col>
@@ -83,7 +59,7 @@
              
               
             </ion-grid>
-            </div>
+          </div>
             </ion-footer>
 
 

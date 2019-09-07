@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore,  AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
   
 
 
@@ -10,22 +10,10 @@ import {map} from 'rxjs/operators';
 })
 
 export class ConStringService {
-  todoCollectionRef: AngularFirestoreCollection<Todo>;
-  todo$: Observable<Todo[]>;
-  constructor(
-    private firestore: AngularFirestore
-  ) {
-
-    // this.todoCollectionRef = this.firestore.collection<Todo>('todos');
-    // this.todo$ = this.todoCollectionRef.snapshotChanges().pipe(map(actions => {
-    //   return actions.map(action => {
-    //     const data = action.payload.doc.data() as Todo;
-    //     const id = action.payload.doc.id;
-    //     return { id, ...data };
-    //   });
-    // }));
-   }
- 
+  constructor(private firestore: AngularFirestore) {         
+    this.getDoc = this.firestore.collection('bor',ref=>ref.where('isActive','==','0')).valueChanges();
+  }
+  public getDoc: Observable<any[]>;
 
   update_bor(recordID,record){
     this.firestore.doc('bor/' + recordID).update(record);
@@ -34,11 +22,9 @@ export class ConStringService {
   getValues(key){
     return this.firestore.collection('bor/').doc(key).snapshotChanges()
   }
- 
-}
 
-export interface Todo {
-  id?: string;
-  description: string;
-  completed: boolean;
+  getKeys(){   
+    return this.getDoc;
+  }
+ 
 }

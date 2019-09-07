@@ -5,7 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Firebase } from '@ionic-native/firebase/ngx';
@@ -16,6 +16,7 @@ import { FcmService } from './services/fcm.service';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { Device } from '@ionic-native/device/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 const firebaseConfig = {
   apiKey: "AIzaSyChKg41ncBoSGhmsg0BqvjHvJepM_P9png",
@@ -37,14 +38,15 @@ const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFirestoreModule,
+    ReactiveFormsModule
     
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Firebase,
+    LocalNotifications,
     FCM,
-    SQLite,
     FcmService,
     Device,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

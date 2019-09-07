@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SqlLiteService } from './sql-lite.service';
+import { LoaderService } from './loader.service';
 
-describe('SqlLiteService', () => {
+describe('LoaderService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SqlLiteService = TestBed.get(SqlLiteService);
+    const service: LoaderService = TestBed.get(LoaderService);
     expect(service).toBeTruthy();
   });
 });
