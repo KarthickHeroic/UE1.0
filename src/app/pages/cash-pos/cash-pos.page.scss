@@ -1,0 +1,57 @@
+#cash {
+    background-color: #f3f3f3;
+    .scroll-content {
+      margin-top: 100px !important;
+    }
+    .item {
+      font-size: 13px;
+      color: var(--ion-color-fontColor1);
+      padding-left: 2px;
+      font-weight: 500;
+    }
+    .list-md .item-block .item-inner {
+      padding-right: 0px;
+    }
+    .label-md {
+      margin: 7px 0;
+    }
+    .siteName,
+    .cashBal {
+      font-weight: 600;      
+    }
+    .dateOn {
+      font-weight: 400;
+    }
+    .alart {
+      background: #e9e9e9;
+      .status::after {
+        content: "";
+        display: block;
+        background: url("../../../assets/imgs/checked.png") no-repeat;
+        width: 15px;
+        height: 15px;
+        float: right;
+        margin-left: 8px;
+        background-size: contain;
+      }
+    }
+    .alart-padding {
+      padding-right: 23px;
+    }
+  }
+
+  
+
+  #cashHeader{
+    .titleRow {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--ion-color-fontColor1);
+      }
+  }
+
+  #cashFooter{
+      .cashBal{
+          font-weight: 600;
+      }
+  }

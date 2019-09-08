@@ -57,6 +57,25 @@ constructor(
       };
     });
 }
+
+cashReport(){  
+
+  
+ // this.route.navigate(['cash-pos']);
+}
+salesReport() {
+ // this.route.navigate(['cash-pos']);
+
+}
+shiftReport() {
+ // this.route.navigate(['cash-pos']);
+
+}
+salePosReport() {
+ // this.route.navigate(['cash-pos']);
+  
+}
+
 ngOnInit() {    
 
 }
