@@ -1,73 +1,73 @@
-<ion-header>
+<ion-header id="homeHeader">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-Welcome to Udhayam 
+<ion-content id="home">
+  <!-- <ion-navbar>
+     <button ion-button menuToggle>
+       <ion-icon name="menu"></ion-icon>
+     </button>   
+   </ion-navbar> -->
+    <!-- <div class="logo">
+     <img src="assets/imgs/logo.png" alt="UE Logo">
+   </div> -->
+
+       <ion-grid>
+           <ion-row class="logoHeader">
+               <div class="logo">
+                   <img src="assets/imgs/logo.png" alt="UE Logo">
+                 </div>                 
+           </ion-row>
+           <ion-row class="menuHeader">
+               <mat-grid-list cols="2" rowHeight="2:1.5">
+                   <mat-grid-tile  (click)="cashReport()">
+                     <div class="tile">
+                       <div class="pos">
+                         <div class="image">
+                           <img src="assets/imgs/money-sack.png">
+                         </div>
+                         <div class="title">Cash Position</div>
+                       </div>
+                     </div>
+                   </mat-grid-tile>
+                   <mat-grid-tile>
+                     <div class="tile" (click)="salesReport()">
+                       <div class="pos">
+                         <div class="image">
+                           <img src="assets/imgs/shopping-cart.png">
+                         </div>
+                         <div class="title">Item Sales</div>
+                       </div>
+                     </div>
+                   </mat-grid-tile>
+                   <mat-grid-tile>
+                     <div class="tile" (click)="shiftReport()">
+                       <div class="pos">
+                         <div class="image">
+                             <img src="assets/imgs/change-position.png">
+                         </div>
+                         <div class="title">Shift Production</div>
+                       </div>
+                     </div>
+                   </mat-grid-tile>
+                   <mat-grid-tile>
+                     <div class="tile" (click)="salePosReport()">
+                       <div class="pos">
+                         <div class="image">
+                             <img src="assets/imgs/been-here-marker.png">
+                         </div>
+                         <div class="title">Sales Position</div>
+                       </div>
+                     </div>
+                   </mat-grid-tile>          
+                 </mat-grid-list>
+             </ion-row>
+           </ion-grid>
+       
 </ion-content>
-
-
- 
-  <!-- <ion-card *ngFor="let item of students">
-    <span *ngIf="!item.isEdit; else elseBlock">
-      <ion-card-header>
-        <ion-card-title>{{item.Name}} of {{item.Age}} years</ion-card-title>
-        <ion-card-subtitle>From: {{item.Address}}</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
- 
-        <ion-button shape="round" color="secondary" size="small" (click)="EditRecord(item)">
-          <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
- 
-        </ion-button>
-        <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(item.id)">
-          <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
- 
-        </ion-button>
-      </ion-card-content>
-    </span>
-    <ng-template #elseBlock>
-      <ion-card-header>
-        <ion-card-title>
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                Edit
-              </ion-col>
-              <ion-col>
-                <ion-button fill="clear" color="medium" size="small" (click)="item.isEdit = false">
-                  Cancel
-                </ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button fill="outline" color="success" size="small" (click)="UpdateRecord(item)">
-                  Update
-                </ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-item>
-          <ion-label><strong>Name</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="item.EditName"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label><strong>Age</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="item.EditAge"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label><strong>Address</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="item.EditAddress"></ion-input>
-        </ion-item>
-      </ion-card-content>
-    </ng-template>
-  </ion-card> -->
- 

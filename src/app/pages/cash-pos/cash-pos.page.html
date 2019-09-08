@@ -1,0 +1,31 @@
+<ion-header id="cashHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-item lines="none">
+      <ion-title>
+        Cash Position
+       
+      </ion-title>
+      <ion-icon slot="end" name="refresh" (click)="refresh()"></ion-icon>
+    </ion-item>
+    
+    
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="titleRow">
+    <ion-row>     
+      <ion-col align-self-start col-3>
+       SITE
+      </ion-col>  
+      <ion-col align-self-start col-5 text-center>
+        ON
+      </ion-col>  
+      <ion-col align-self-start col-4 text-right>
+       BAL.
+      </ion-col>  
+    </ion-row>
+  </ion-grid> 
+</ion-content>

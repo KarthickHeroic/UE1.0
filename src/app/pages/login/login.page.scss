@@ -1,0 +1,64 @@
+
+#loginpage{
+    background-color: #ffffff;
+    mat-form-field, button{
+    width: 100%;
+}
+
+
+.mat-form-field-underline .mat-form-field-ripple{
+    background-color: var(--ion-color-themeColor) !important;
+}
+.mat-form-field-underline{
+    background-color:#797979 !important;
+}
+
+.mat-form-field-placeholder{
+
+    color:#505050;
+    font-weight: 100;
+  }
+  
+.mat-focused .mat-form-field-placeholder{
+  
+    color:#000;
+  }
+  .mat-input-element{
+      color:#000 !important;
+  }
+input.mat-input-element { 
+    height: 20px !important;
+}
+}
+.button-rpt
+{
+    
+    margin-top: 20px !important;
+    height: 50px !important;
+    border-radius:0 !important; 
+    background-color: var(--ion-color-themeColor);
+    ::ng-deep .mat-button-wrapper{
+        color:#fff !important;
+        font-size:18px; 
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+}
+.logo{
+    width: 30%;
+    margin: 0 auto;
+    margin-bottom: 10%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.continer {      
+    padding: 10px 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+}
+
+

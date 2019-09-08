@@ -16,6 +16,10 @@ import { FcmService } from './services/fcm.service';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { IonicStorageModule } from '@ionic/storage';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 const firebaseConfig = {
   apiKey: "AIzaSyChKg41ncBoSGhmsg0BqvjHvJepM_P9png",
@@ -37,7 +41,10 @@ const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFirestoreModule,
-    ReactiveFormsModule
+    IonicStorageModule.forRoot(),
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule, MatCheckboxModule
     
   ],
   providers: [
@@ -48,6 +55,7 @@ const firebaseConfig = {
     FCM,
     FcmService,
     Device,
+    MaterialModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

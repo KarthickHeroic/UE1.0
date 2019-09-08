@@ -4,13 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
+
 import { HomePage } from './home.page';
+import { MatFormFieldModule, MatInputModule, MatGridListModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatGridListModule,
+    
+
     RouterModule.forChild([
       {
         path: '',
