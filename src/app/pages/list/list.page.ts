@@ -46,9 +46,9 @@ public bor: Array<{id:string; siteName: string; custName: string; }> = [];
             })
             })
                
-            
+            this.loader.dismiss(); 
             });
-         this.loader.dismiss();        
+               
             }
 
 

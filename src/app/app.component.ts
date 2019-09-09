@@ -1,3 +1,4 @@
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -21,17 +22,17 @@ export class AppComponent {
 
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list',
-
-    },
-    {
       title: 'BOR',
-      url: '/bor',
+      url: '/list',
       icon: 'notifications',
 
     },
+    // {
+    //   title: 'BOR',
+    //   url: '/bor',
+    //   icon: 'notifications',
+
+    // },
     {
       title:'Logout',
       icon:'log-out',
@@ -47,8 +48,8 @@ export class AppComponent {
     private fcmService:FcmService,
     public route: Router,
     public fcm:FCM,
-    public storage: Storage
-    
+    public storage: Storage,
+    private localNotifications: LocalNotifications,    
   
 
   ) {
@@ -60,6 +61,52 @@ export class AppComponent {
       }
       else if (val == 'logout'){
         this.route.navigate(['login'])
+      }
+    });
+    
+    this.fcm.onNotification().subscribe(data => { 
+      this.localNotifications.on('click').subscribe((notification) => {
+      let navigationExtras: NavigationExtras = {            
+          state: {
+            values: data.token
+          }
+        };
+        storage.get('Status').then((val) => {
+          if (val == 'login') {
+        this.route.navigate(['list'],navigationExtras);
+          }
+          else
+          {
+            this.route.navigate(['login'],navigationExtras);
+          }
+        })
+      
+    });
+      if (data.wasTapped) {  
+        console.log("Received in background");
+        let navigationExtras: NavigationExtras = {            
+          state: {
+            values: data.token
+          }
+        };
+        storage.get('Status').then((val) => {
+          if (val == 'login') {
+        this.route.navigate(['bor'],navigationExtras);
+          }
+          else
+          {
+            this.route.navigate(['login'],navigationExtras);
+          }
+        })
+      } else {
+        console.log("Received in foreground");
+        const customer = data.custName + " from " + data.siteName
+        this.localNotifications.schedule({
+            title:'Block OverRide Alart',
+            text: `${customer} amount is Full!`,
+            icon:'',           
+        });
+        
       }
     });
   }

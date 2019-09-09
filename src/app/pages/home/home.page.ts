@@ -22,40 +22,12 @@ constructor(
   public route: Router,   
   public constring:ConStringService, 
   private fcmService:FcmService,
-  private localNotifications: LocalNotifications) {
+  ) {
   this.plt.ready()
     .then(() => {
       fcmService.getToken();
     });
 
-    this.fcm.onNotification().subscribe(data => { 
-      this.localNotifications.on('click').subscribe((notification) => {
-      let navigationExtras: NavigationExtras = {            
-          state: {
-            values: data.token
-          }
-        };
-        this.route.navigate(['list'],navigationExtras);
-    });
-      if (data.wasTapped) {  
-        console.log("Received in background");
-        let navigationExtras: NavigationExtras = {            
-          state: {
-            values: data.token
-          }
-        };
-        this.route.navigate(['bor'],navigationExtras);
-      } else {
-        console.log("Received in foreground");
-        const customer = data.custName + " from " + data.siteName
-        this.localNotifications.schedule({
-            title:'Block OverRide Alart',
-            text: `${customer} amount is Full!`,
-            icon:'',           
-        });
-        
-      };
-    });
 }
 
 cashReport(){  

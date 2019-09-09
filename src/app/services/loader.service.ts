@@ -15,6 +15,7 @@ async present() {
     return await this.loadingController.create({
         message: 'Please Wait...',
         spinner: 'dots',
+       
     }).then(a => {
       a.present().then(() => {
         console.log('presented');
